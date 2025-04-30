@@ -24,56 +24,130 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex justify-between items-center">
-          <a href="#home" className="text-xl md:text-2xl font-bold text-gray-800">
-            Kishlay Kumar
-          </a>
+//   return (
+//     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+//       <div className="container mx-auto px-4 md:px-8">
+//         <div className="flex justify-between items-center">
+//           <a href="#home" className="text-xl md:text-2xl font-bold text-gray-800">
+//             Kishlay Kumar
+//           </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+//           {/* Desktop Menu */}
+//           <div className="hidden md:flex space-x-8">
+//             {navLinks.map((link) => (
+//               <a 
+//                 key={link.name} 
+//                 href={link.href} 
+//                 className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
+//               >
+//                 {link.name}
+//               </a>
+//             ))}
+//           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-800 focus:outline-none"
+//           {/* Mobile Menu Button */}
+//           <button 
+//             onClick={() => setIsOpen(!isOpen)}
+//             className="md:hidden text-gray-800 focus:outline-none"
+//           >
+//             {isOpen ? <X size={24} /> : <Menu size={24} />}
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       {isOpen && (
+//         <div className="md:hidden bg-white">
+//           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+//             {navLinks.map((link) => (
+//               <a 
+//                 key={link.name} 
+//                 href={link.href} 
+//                 className="text-gray-600 hover:text-blue-600 transition-colors py-2 px-4"
+//                 onClick={() => setIsOpen(false)}
+//               >
+//                 {link.name}
+//               </a>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+return (
+  <nav
+    className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
+    }`}
+  >
+    <div className="container mx-auto px-4 md:px-8">
+      <div className="flex justify-between items-center">
+        <a href="#home" className="text-xl md:text-2xl font-bold text-gray-800">
+          Kishlay Kumar
+        </a>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-8 items-center">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
+            >
+              {link.name}
+            </a>
+          ))}
+          {/* Add Download CV Button */}
+          <a
+            href="https://drive.google.com/file/d/1nOCIiuD2UqOG9Z8mf3PgBaGA4jDfmlLK/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            Download CV
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-800 focus:outline-none"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile Menu */}
+    {isOpen && (
+      <div className="md:hidden bg-white">
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-gray-600 hover:text-blue-600 transition-colors py-2 px-4"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+          {/* Add Download CV Button in Mobile Menu */}
+          <a
+            href="https://drive.google.com/file/d/1nOCIiuD2UqOG9Z8mf3PgBaGA4jDfmlLK/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-center"
+            onClick={() => setIsOpen(false)}
+          >
+            Download CV
+          </a>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-gray-600 hover:text-blue-600 transition-colors py-2 px-4"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
-
+    )}
+  </nav>
+);}
 export default Navbar;
